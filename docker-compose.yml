@@ -1,0 +1,17 @@
+version: '3'
+services:
+  haproxy:
+    image: haproxy:2.0.20-alpine
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./haproxy.cfg:/etc/haproxy/haproxy.cfg:ro
+    networks:
+      - mynet
+
+networks:
+  mynet:
+    driver: bridge
+    
